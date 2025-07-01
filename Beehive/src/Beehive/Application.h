@@ -3,7 +3,6 @@
 #include "Core.h"
 #include "Events/Event.h"
 
-#include <iostream>
 
 namespace Beehive
 {

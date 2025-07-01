@@ -76,7 +76,8 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>bhpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>BH_PLATFORM_WINDOWS;BH_BUILD_DLL;BH_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -99,7 +100,8 @@ copy /B /Y ..\bin\Debug-windows-x86_64\Beehive\Beehive.dll ..\bin\Debug-windows-
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>bhpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>BH_PLATFORM_WINDOWS;BH_BUILD_DLL;BH_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -126,7 +128,8 @@ copy /B /Y ..\bin\Release-windows-x86_64\Beehive\Beehive.dll ..\bin\Release-wind
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>bhpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>BH_PLATFORM_WINDOWS;BH_BUILD_DLL;BH_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -152,21 +155,23 @@ copy /B /Y ..\bin\Dist-windows-x86_64\Beehive\Beehive.dll ..\bin\Dist-windows-x8
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Beehive\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\Beehive\Events\Event.h" />
-    <ClInclude Include="src\Beehive\Events\KeyEvent.h" />
-    <ClInclude Include="src\Beehive\Events\MouseEvent.h" />
     <ClInclude Include="src\Beehive.h" />
     <ClInclude Include="src\Beehive\Application.h" />
     <ClInclude Include="src\Beehive\Core.h" />
     <ClInclude Include="src\Beehive\EntryPoint.h" />
+    <ClInclude Include="src\Beehive\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Beehive\Events\Event.h" />
+    <ClInclude Include="src\Beehive\Events\KeyEvent.h" />
+    <ClInclude Include="src\Beehive\Events\MouseEvent.h" />
     <ClInclude Include="src\Beehive\Log.h" />
-    <ClInclude Include="src\test.h" />
+    <ClInclude Include="src\bhpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Beehive\Application.cpp" />
     <ClCompile Include="src\Beehive\Log.cpp" />
-    <ClCompile Include="src\test.cpp" />
+    <ClCompile Include="src\bhpch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,5 @@
 #pragma once
+#include "bhpch.h"
 #include "Beehive/Core.h"
 
 namespace Beehive

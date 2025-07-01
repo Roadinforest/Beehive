@@ -19,6 +19,9 @@ project "Beehive"
     targetdir("bin/" .. outputdir .. "/%{prj.name}")
     objdir("bin-int/" .. outputdir .. "/%{prj.name}")
 
+    pchheader "bhpch.h"
+    pchsource "Beehive/src/bhpch.cpp"
+
     files
     {
         "%{prj.name}/src/**.h",

@@ -1,7 +1,8 @@
+#include "bhpch.h"
 #include "Application.h"
 
-#include "Beehive/Log.h"
 #include "Beehive/Events/ApplicationEvent.h"
+#include "Beehive/Log.h"
 
 namespace Beehive
 {

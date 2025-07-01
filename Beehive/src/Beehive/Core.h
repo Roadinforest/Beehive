@@ -1,18 +1,5 @@
 #pragma once
 
-#include <string>
-#include <sstream>
-#include <iostream>
-#include <memory>
-#include <utility>
-#include <algorithm>
-#include <functional>
-
-#include <vector>
-#include <unordered_map>
-#include <unordered_set>
-
-
 #ifdef BH_PLATFORM_WINDOWS
 	#ifdef BH_BUILD_DLL
 		#define BH_API __declspec(dllexport)
