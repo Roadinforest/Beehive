@@ -17,5 +17,6 @@ public:
 Beehive::Application* Beehive::CreateApplication()
 {
 	std::cout << "This is sandbox" << std::endl;
+	
 	return new Sandbox();
 }

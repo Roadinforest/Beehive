@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Core.h"
+#include "Events/Event.h"
 
 #include <iostream>
 
@@ -16,5 +17,4 @@ namespace Beehive
 
 	// To be defined in client
 	Application* CreateApplication();
-
 }

@@ -1,0 +1,3 @@
+[submodule "Beehive/vendor/spdlog"]
+	path = Beehive/vendor/spdlog
+	url = https://github.com/gabime/spdlog
