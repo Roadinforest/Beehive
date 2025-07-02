@@ -79,8 +79,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>bhpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>BH_PLATFORM_WINDOWS;BH_BUILD_DLL;BH_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BH_PLATFORM_WINDOWS;BH_BUILD_DLL;BH_ENABLE_ASSERTS;BH_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -91,6 +91,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Debug-windows-x86_64\Beehive\Beehive.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -103,8 +104,8 @@ copy /B /Y ..\bin\Debug-windows-x86_64\Beehive\Beehive.dll ..\bin\Debug-windows-
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>bhpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>BH_PLATFORM_WINDOWS;BH_BUILD_DLL;BH_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BH_PLATFORM_WINDOWS;BH_BUILD_DLL;BH_ENABLE_ASSERTS;BH_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -119,6 +120,7 @@ copy /B /Y ..\bin\Debug-windows-x86_64\Beehive\Beehive.dll ..\bin\Debug-windows-
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Release-windows-x86_64\Beehive\Beehive.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -131,8 +133,8 @@ copy /B /Y ..\bin\Release-windows-x86_64\Beehive\Beehive.dll ..\bin\Release-wind
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>bhpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>BH_PLATFORM_WINDOWS;BH_BUILD_DLL;BH_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BH_PLATFORM_WINDOWS;BH_BUILD_DLL;BH_ENABLE_ASSERTS;BH_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -147,6 +149,7 @@ copy /B /Y ..\bin\Release-windows-x86_64\Beehive\Beehive.dll ..\bin\Release-wind
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Dist-windows-x86_64\Beehive\Beehive.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -164,14 +167,22 @@ copy /B /Y ..\bin\Dist-windows-x86_64\Beehive\Beehive.dll ..\bin\Dist-windows-x8
     <ClInclude Include="src\Beehive\Events\KeyEvent.h" />
     <ClInclude Include="src\Beehive\Events\MouseEvent.h" />
     <ClInclude Include="src\Beehive\Log.h" />
+    <ClInclude Include="src\Beehive\Platform\WindowsWindow.h" />
+    <ClInclude Include="src\Beehive\Window.h" />
     <ClInclude Include="src\bhpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Beehive\Application.cpp" />
     <ClCompile Include="src\Beehive\Log.cpp" />
+    <ClCompile Include="src\Beehive\Platform\WindowsWindow.cpp" />
     <ClCompile Include="src\bhpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
+      <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

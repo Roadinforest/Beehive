@@ -7,6 +7,9 @@
     <Filter Include="Beehive\Events">
       <UniqueIdentifier>{8154417C-6D22-3582-56B6-A5A8422311E7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Beehive\Platform">
+      <UniqueIdentifier>{318006AE-1D79-2500-46AB-0A853203050C}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Beehive.h" />
@@ -34,6 +37,12 @@
     <ClInclude Include="src\Beehive\Log.h">
       <Filter>Beehive</Filter>
     </ClInclude>
+    <ClInclude Include="src\Beehive\Platform\WindowsWindow.h">
+      <Filter>Beehive\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Beehive\Window.h">
+      <Filter>Beehive</Filter>
+    </ClInclude>
     <ClInclude Include="src\bhpch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +51,9 @@
     </ClCompile>
     <ClCompile Include="src\Beehive\Log.cpp">
       <Filter>Beehive</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Beehive\Platform\WindowsWindow.cpp">
+      <Filter>Beehive\Platform</Filter>
     </ClCompile>
     <ClCompile Include="src\bhpch.cpp" />
   </ItemGroup>

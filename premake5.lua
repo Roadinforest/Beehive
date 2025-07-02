@@ -11,6 +11,11 @@ workspace "Beehive"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+include "Beehive/vendor/GLFW"             -- Add the premake file in GLFW into this premake file
+
+IncludeDir = {}
+IncludeDir["GLFW"] = "Beehive/vendor/GLFW/include"
+
 project "Beehive"
     location "Beehive"
     kind "SharedLib"
@@ -31,7 +36,14 @@ project "Beehive"
     includedirs
     {
         "%{prj.name}/src",
-        "%{prj.name}/vendor/spdlog/include"
+        "%{prj.name}/vendor/spdlog/include",
+        "%{IncludeDir.GLFW}"
+    }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib"
     }
 
     filter "system:windows"
@@ -43,7 +55,8 @@ project "Beehive"
         defines
         {
             "BH_PLATFORM_WINDOWS",
-            "BH_BUILD_DLL"
+            "BH_BUILD_DLL",
+            "BH_ENABLE_ASSERTS"
         }
 
         -- Put the generated dll file to the 
@@ -54,15 +67,18 @@ project "Beehive"
         }
 
     filter "configurations:Debug"
+        runtime "Debug"
         defines "BH_DEBUG"
         symbols "On"
 
 
     filter "configurations:Release"
+        runtime "Release"   
         defines "BH_RELEASE"
         optimize "On"
 
     filter "configurations:Dist"
+        runtime "Release"
         defines "BH_DIST"
         optimize "On"
 

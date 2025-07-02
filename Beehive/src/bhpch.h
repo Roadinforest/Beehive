@@ -15,3 +15,5 @@
 #ifdef BH_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif
+
+#include "Beehive/Log.h"

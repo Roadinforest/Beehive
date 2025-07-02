@@ -2,13 +2,13 @@
 #include "Application.h"
 
 #include "Beehive/Events/ApplicationEvent.h"
-#include "Beehive/Log.h"
+#include <GLFW/glfw3.h>
 
 namespace Beehive
 {
 	Application::Application()
 	{
-
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application()
@@ -18,17 +18,24 @@ namespace Beehive
 
 	void Application::Run()
 	{
-		WindowResizeEvent e(1280, 720);
-		if (e.IsInCategory(EventCategoryApplication))
+		while (m_Running)
 		{
-			BH_TRACE(e.ToString());
-		}
-		if (e.IsInCategory(EventCategoryInput))
-		{
-			BH_TRACE(e.ToString());
+			glClearColor(1, 0, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			m_Window->OnUpdate();
 		}
 
-		while (true);
-		while (1);
+		//WindowResizeEvent e(1280, 720);
+		//if (e.IsInCategory(EventCategoryApplication))
+		//{
+		//	BH_TRACE(e.ToString());
+		//}
+		//if (e.IsInCategory(EventCategoryInput))
+		//{
+		//	BH_TRACE(e.ToString());
+		//}
+
+		//while (true);
+		//while (1);
 	}
 }
