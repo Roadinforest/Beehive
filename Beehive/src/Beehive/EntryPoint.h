@@ -13,6 +13,10 @@ int main(int argc, char** argv)
 	BH_CORE_INFO("info test");
 	BH_CORE_WARN("warn test");
 	BH_CORE_CRITICAL("critical test");
+	bool a = true;
+	BH_ASSERT(a, "Error in Entry point");
+	printf("Hello");
+
 	auto app = Beehive::CreateApplication();
 	app->Run();
 	delete app;

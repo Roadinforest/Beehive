@@ -116,6 +116,7 @@ project "Sandbox"
         defines
         {
             "BH_PLATFORM_WINDOWS",
+            "BH_ENABLE_ASSERTS"
         }
 
     filter "configurations:Debug"
