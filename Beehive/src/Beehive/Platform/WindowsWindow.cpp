@@ -48,12 +48,16 @@ namespace Beehive
 			s_GLFWInitialized = true;
 		}
 
+		// Create Window
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
 		// Set GLFW callbacks at the init function
+		// Usually a lambda function, which like telling the glfw that
+		// "Hi, there is a function. When the 'window size' changes or any other things
+		// ¡ª¡ª call the function I give you."
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);

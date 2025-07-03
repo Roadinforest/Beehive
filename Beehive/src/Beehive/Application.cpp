@@ -10,7 +10,11 @@ namespace Beehive
 	Application::Application()
 	{
 		m_Window = std::unique_ptr<Window>(Window::Create());
+
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		// Knowledge!!!
+		// In this case the window class has no idea who gives it this function
+		// What it knows is that the OnEvent function itself
 	}
 
 	Application::~Application()
@@ -33,8 +37,6 @@ namespace Beehive
 			glClearColor(1, 0, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 			m_Window->OnUpdate();
-		}
-
 		//WindowResizeEvent e(1280, 720);
 		//if (e.IsInCategory(EventCategoryApplication))
 		//{
